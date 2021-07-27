@@ -72,18 +72,16 @@ class Users
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
         
-        if ($stmt->execute()) {
-            return true;
-        }
+        $stmt->execute();
         
         //get the last id from visitor table
         $query1 = 'SELECT id FROM users ORDER BY users.id DESC LIMIT 1';
-        $stmt = $this->conn->prepare($query1);
+        $stmt = $this->conn->query($query1);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $last_id = $row['id'];
-
-
-        $query2 = " INSERT INTO users (firstName, lastName, birthdate, cin, gender, job, phoneNumber, address, user_id) 
+        
+        
+        $query2 = "INSERT INTO clients (firstName, lastName, birthdate, cin, gender, job, phoneNumber, address, user_id) 
         VALUES (:firstName, :lastName, :birthdate, :cin, :gender, :job, :phoneNumber, :address, ".$last_id.")";
 
         // clean client informations
@@ -95,32 +93,39 @@ class Users
         $this->job = htmlspecialchars(strip_tags($this->job));
         $this->phoneNumber = htmlspecialchars(strip_tags($this->phoneNumber));
         $this->address = htmlspecialchars(strip_tags($this->address));
-
-        $stmt = $this->conn->prepare($query2);
-
+        
+        $stmt1 = $this->conn->prepare($query2);
+        
         // bind data
-        $stmt->bindParam(':firstName', $this->firstName);
-        $stmt->bindParam(':lastName', $this->lastName);
-        $stmt->bindParam(':birthdate', $this->birthdate);
-        $stmt->bindParam(':cin', $this->cin);
-        $stmt->bindParam(':gender', $this->gender);
-        $stmt->bindParam(':job', $this->job);
-        $stmt->bindParam(':phoneNumber', $this->phoneNumber);
-        $stmt->bindParam(':address', $this->address);
+        $stmt1->bindParam(':firstName', $this->firstName);
+        $stmt1->bindParam(':lastName', $this->lastName);
+        $stmt1->bindParam(':birthdate', $this->birthdate);
+        $stmt1->bindParam(':cin', $this->cin);
+        $stmt1->bindParam(':gender', $this->gender);
+        $stmt1->bindParam(':job', $this->job);
+        $stmt1->bindParam(':phoneNumber', $this->phoneNumber);
+        $stmt1->bindParam(':address', $this->address);&
+        
+        if ($stmt1->execute()) {
+            return true;
+        }
 
         // print error if something goes wrong
         printf("Error %s.\n", $stmt->error);
         return false;
     }
-
-    public function checkUserExistence()
+    
+    public function login_check()
     {
-        $query = "SELECT * FROM users WHERE Reference = :Reference";
+        $query = "SELECT * FROM users WHERE email = :email AND password= :password";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':Reference', $this->Reference);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         return $result;
     }
+
+    
 }

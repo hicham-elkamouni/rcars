@@ -116,14 +116,14 @@ class ApiUser
         $user->email = $data->email;
         $user->password = $data->password;
 
-        /* $user->firstName = $data->firstName;
+        $user->firstName = $data->firstName;
         $user->lastName = $data->lastName;
         $user->birthdate = $data->birthdate;
         $user->cin = $data->cin;
         $user->gender = $data->gender;
         $user->job = $data->job;
         $user->phoneNumber = $data->phoneNumber;
-        $user->address = $data->address; */
+        $user->address = $data->address;
 
         $u_arr = array();
         if ($user->create()) {   
@@ -135,8 +135,7 @@ class ApiUser
     
         } else {
     
-        $u_arr = 
-        array('message' => 'user not iserted',
+        $u_arr = array('message' => 'user not iserted',
             'state' => false);
 
         echo json_encode($u_arr);
@@ -145,11 +144,47 @@ class ApiUser
 
     }
 
+    public function sign_in(){
+
+        // instantiate Database
+        $database = new Database();
+        $db = $database->connect();
+
+        // instantiate User object
+        $user = new Users($db);
+
+        // get raw posted data
+        $data = json_decode(file_get_contents("php://input"));
+
+        $user->email = $data->email;
+        $user->password = $data->password;
+
+        $result = $user->login_check();
+
+        if ($result){
+            
+            extract($result);
+            $u = array( 'id' => $id,
+                        'email' => $email,
+                        'status' => true);
+
+            echo json_encode($u);
+
+        }else {
+
+            $u = array('message' => "there's no id",
+                        'status' => false);
+
+            echo json_encode($u);
+
+        }
+    }
+
     public function create()
     {
 
         // headers
-       
+        
 
         // instantiate Database
         $database = new Database();
