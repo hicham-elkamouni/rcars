@@ -36,8 +36,6 @@ spl_autoload_register(function ($class) {
 //  params [0] / params [1] / params [2]
 
 $params = explode('/', $_GET['p']);
-print_r($params);
-die ();
 
 if (isset($params[0]) & !empty($params[0])) {
 

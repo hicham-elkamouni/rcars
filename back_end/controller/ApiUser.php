@@ -4,7 +4,7 @@ class ApiUser
 {
 
     public function __construct(){
-        
+
     }
     public function index()
     {
@@ -125,7 +125,23 @@ class ApiUser
         $user->phoneNumber = $data->phoneNumber;
         $user->address = $data->address; */
 
+        $u_arr = array();
+        if ($user->create()) {   
+        $u_arr = array(
+        'message' => 'user iserted',
+        'state' => true);
+    
+        echo json_encode($u_arr);
+    
+        } else {
+    
+        $u_arr = 
+        array('message' => 'user not iserted',
+            'state' => false);
 
+        echo json_encode($u_arr);
+        
+            }
 
     }
 
@@ -181,8 +197,7 @@ class ApiUser
     
                 $u_arr = array(
                 'message' => 'user iserted',
-                'state' => true,
-                'reference'=>$user->Reference);
+                'state' => true);
     
                 echo json_encode($u_arr);
     

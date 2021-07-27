@@ -59,7 +59,7 @@ class Users
     // create a user
     public function create()
     {
-        $query = " INSERT INTO users (role, email, password) VALUES (:role , :email, 'client')";
+        $query = " INSERT INTO users (role, email, password) VALUES ('client' , :email, :password)";
 
         // Clean data
         $this->email = htmlspecialchars(strip_tags($this->email));
@@ -71,20 +71,47 @@ class Users
         // Bind data
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-
-        /* $stmt->bindParam(':userPassword', $this->userPassword); */
-
-
+        
         if ($stmt->execute()) {
             return true;
         }
+        
+        //get the last id from visitor table
+        $query1 = 'SELECT id FROM users ORDER BY users.id DESC LIMIT 1';
+        $stmt = $this->conn->prepare($query1);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $last_id = $row['id'];
+
+
+        $query2 = " INSERT INTO users (firstName, lastName, birthdate, cin, gender, job, phoneNumber, address, user_id) 
+        VALUES (:firstName, :lastName, :birthdate, :cin, :gender, :job, :phoneNumber, :address, ".$last_id.")";
+
+        // clean client informations
+        $this->firstName = htmlspecialchars(strip_tags($this->firstName));
+        $this->lastName = htmlspecialchars(strip_tags($this->lastName));
+        $this->birthdate = htmlspecialchars(strip_tags($this->birthdate));
+        $this->cin = htmlspecialchars(strip_tags($this->cin));
+        $this->gender = htmlspecialchars(strip_tags($this->gender));
+        $this->job = htmlspecialchars(strip_tags($this->job));
+        $this->phoneNumber = htmlspecialchars(strip_tags($this->phoneNumber));
+        $this->address = htmlspecialchars(strip_tags($this->address));
+
+        $stmt = $this->conn->prepare($query2);
+
+        // bind data
+        $stmt->bindParam(':firstName', $this->firstName);
+        $stmt->bindParam(':lastName', $this->lastName);
+        $stmt->bindParam(':birthdate', $this->birthdate);
+        $stmt->bindParam(':cin', $this->cin);
+        $stmt->bindParam(':gender', $this->gender);
+        $stmt->bindParam(':job', $this->job);
+        $stmt->bindParam(':phoneNumber', $this->phoneNumber);
+        $stmt->bindParam(':address', $this->address);
 
         // print error if something goes wrong
         printf("Error %s.\n", $stmt->error);
         return false;
     }
-
-
 
     public function checkUserExistence()
     {
