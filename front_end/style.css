@@ -1,0 +1,319 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.container {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60%;
+  margin: 0 auto 50px;
+  top: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.illustration_container {
+  border: 1px solid #201f1f;
+  width: 40%;
+}
+
+.register_form {
+  width: 60%;
+  height: 500px;
+  border: 1px solid #1f0505;
+}
+
+.input_field {
+  height: 1.4rem;
+  padding: 20px 10px;
+  border: 1px solid #372E2E;
+}
+
+.input_field::-webkit-input-placeholder {
+  color: #929292;
+}
+
+.input_field:-ms-input-placeholder {
+  color: #929292;
+}
+
+.input_field::-ms-input-placeholder {
+  color: #929292;
+}
+
+.input_field::placeholder {
+  color: #929292;
+}
+
+.checkbox_terms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.checkbox {
+  margin-right: 5px;
+  padding: 35px;
+}
+
+/* ---------- contact us page ----------*/
+.container_title_img {
+  width: 100%;
+  height: 9.5rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 38, 38, 0.6))), url("/img/cars-transportation-races.jpg");
+  background-image: linear-gradient(rgba(39, 38, 38, 0.6)), url("/img/cars-transportation-races.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.container_contact_form_us {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.title {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  color: #fff;
+}
+
+.title::after {
+  content: '';
+  content: '';
+  border: 2px solid #E61722;
+  width: 50%;
+}
+
+.input_field_2 {
+  width: 45%;
+  height: 1.4rem;
+  padding: 20px 10px;
+  margin: 10px 0px 10px 2%;
+  border: 1px solid #372E2E;
+}
+
+.input_field_2::-webkit-input-placeholder {
+  color: #929292;
+}
+
+.input_field_2:-ms-input-placeholder {
+  color: #929292;
+}
+
+.input_field_2::-ms-input-placeholder {
+  color: #929292;
+}
+
+.input_field_2::placeholder {
+  color: #929292;
+}
+
+/* form */
+.contact-form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 25px;
+}
+
+.contact-msg {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 20px 10px;
+  margin-bottom: 25px;
+}
+
+.textarea_field {
+  width: 100%;
+}
+
+.confirmation_button {
+  padding: 10px 25px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: #E61722;
+  border: none;
+  cursor: pointer;
+  width: 180px;
+  height: 60px;
+  font-weight: bold;
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+}
+
+.confirmation_button:hover {
+  -webkit-box-shadow: 0 0 11px rgba(33, 33, 33, 0.5);
+          box-shadow: 0 0 11px rgba(33, 33, 33, 0.5);
+}
+
+.iframe_container {
+  width: 100vw;
+  height: 200px;
+}
+
+.section_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.section_title::after {
+  content: '';
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-bottom: 1px solid #000;
+  margin-left: 25px;
+}
+
+.contact_us_container {
+  margin-left: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.contact_us_title {
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.icon_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 10px 0px;
+}
+
+.icons_container {
+  display: -ms-grid;
+  display: grid;
+  justify-items: start;
+}
+
+/* ---------- about us --------- */
+.about_us_title {
+  margin-bottom: 30px;
+}
+
+.red_title {
+  color: #E61722;
+}
+
+.img_txt_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 50vh;
+  margin-bottom: 50px;
+}
+
+.img_container {
+  width: 50%;
+  overflow: hidden;
+}
+
+.txt_container {
+  width: 40%;
+}
+
+.img_test {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.partners_container {
+  height: 25vh;
+  width: 100%;
+  background-color: #ebc3c3;
+}
+
+.partners_title {
+  text-transform: uppercase;
+  margin: 15px 0px;
+  text-align: center;
+}
+
+.partners_icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.partner_icon {
+  border: 1px solid #000;
+  width: 15vw;
+  height: 20vh;
+}
+/*# sourceMappingURL=style.css.map */

@@ -104,7 +104,7 @@ class Users
         $stmt1->bindParam(':gender', $this->gender);
         $stmt1->bindParam(':job', $this->job);
         $stmt1->bindParam(':phoneNumber', $this->phoneNumber);
-        $stmt1->bindParam(':address', $this->address);&
+        $stmt1->bindParam(':address', $this->address);
         
         if ($stmt1->execute()) {
             return true;
