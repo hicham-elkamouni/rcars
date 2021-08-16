@@ -291,15 +291,17 @@ textarea:focus, input:focus {
 }
 
 .partners_container {
-  height: 25vh;
+  height: 28vh;
   width: 100%;
-  background-color: #ebc3c3;
+  background-color: #5a5a5a;
 }
 
 .partners_title {
   text-transform: uppercase;
-  margin: 15px 0px;
+  padding: 15px 0px;
   text-align: center;
+  color: #fff;
+  letter-spacing: 0.25em;
 }
 
 .partners_icons {
@@ -309,11 +311,177 @@ textarea:focus, input:focus {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  margin: 0 250px;
 }
 
 .partner_icon {
-  border: 1px solid #000;
   width: 15vw;
   height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.partner_img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* ----------- gallery ----------- */
+.roww {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.imagee {
+  background: #0a0a0a;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  max-width: 460px;
+  height: 300px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.imagee img {
+  opacity: 0.8;
+  position: relative;
+  vertical-align: top;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.imagee:hover img {
+  opacity: 1;
+}
+
+.imagee .details {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.imagee .details h2 {
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 70px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+}
+
+.imagee .details h2 span {
+  font-weight: 900;
+}
+
+.imagee:hover .details h2 {
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
+}
+
+.imagee .details p {
+  margin: 30px 30px 0 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+}
+
+.imagee:hover .details p {
+  opacity: 1;
+  -webkit-transform: translateY(-40px);
+          transform: translateY(-40px);
+}
+
+.more {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  bottom: -60px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+}
+
+.imagee:hover .more {
+  bottom: 0;
+}
+
+.more .read-more {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.more .read-more span {
+  font-weight: 900;
+}
+
+.more .icon-links i {
+  color: #000;
+  font-size: 20px;
+}
+
+.more .icon-links a:not(:last-child) i {
+  margin-right: 20px;
+}
+
+.gallery h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 25px auto;
+  background-color: #e0ac1c;
 }
 /*# sourceMappingURL=style.css.map */
