@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar/>
-    <div class="container_title_img">
+    <div :style="{backgroundImage: 'linear-gradient(color) , url('+require('@/assets/'+'img/cars-transportation-races.jpg')+')'}" class="container_title_img">
         <h3 class="title">Contact Us</h3>
     </div>
     <div class="container">
