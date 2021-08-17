@@ -364,6 +364,9 @@ textarea:focus, input:focus {
   transition: 0.6s;
   -webkit-transition-property: opacity;
   transition-property: opacity;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
 }
 
 .imagee:hover img {
@@ -484,4 +487,6 @@ textarea:focus, input:focus {
   padding: 25px auto;
   background-color: #e0ac1c;
 }
+
+/* --------- sign up / sign in ---------- */
 /*# sourceMappingURL=style.css.map */

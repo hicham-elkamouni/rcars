@@ -277,6 +277,8 @@ textarea:focus, input:focus{
     vertical-align: top;
     transition: 0.6s;
     transition-property: opacity;
+    object-fit: contain;
+    height: 100%;
 }
 
 .imagee:hover img {
@@ -373,3 +375,8 @@ textarea:focus, input:focus{
     padding: 25px auto;
     background-color: #e0ac1c;
 }
+
+/* --------- sign up / sign in ---------- */
+
+
+
