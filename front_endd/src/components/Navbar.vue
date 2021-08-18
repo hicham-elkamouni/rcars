@@ -4,17 +4,15 @@
     <nav>
         <input id="nav-toggle" type="checkbox">
         <div class="logo">
-            <span>R<span style="color:#e0ac1c">CAR</span></span>
+            <span>R<span style="color:#E61722">CAR</span></span>
             
         </div>
         <ul class="links">
             <router-link to="/" style="color: #e0ac1c;">Home</router-link>
-            <router-link to="/contact">Contact</router-link>
             <!-- <li><a href="index.html" >HOME</a></li> -->
             <li><a href="gallery.html">GALLERY</a></li>
-            <li><a href="reservation.html">RESERVATION</a></li>
             <router-link to="/contact">Contact</router-link>
-            <li><a href="about.html">ABOUT</a></li>
+            <router-link to="/about">About</router-link>
             <li><a href="about.html">CONNEXION</a></li>
 
         </ul>

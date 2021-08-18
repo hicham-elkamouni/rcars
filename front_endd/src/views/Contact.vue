@@ -1,7 +1,8 @@
 <template>
   <div>
     <Navbar/>
-    <div :style="{backgroundImage: 'linear-gradient(color) , url('+require('@/assets/'+'img/cars-transportation-races.jpg')+')'}" class="container_title_img">
+    <div class="container_title_img">
+    <!-- <div :style="{backgroundImage: 'url('+require('@/assets/'+'img/cars-transportation-races.jpg')+')'}" class="container_title_img"> -->
         <h3 class="title">Contact Us</h3>
     </div>
     <div class="container">
@@ -33,19 +34,19 @@
                 </h3>
                 <div class="icons_container">
                     <div class="icon_container">
-                        <img class="icon" src="img/icons/localisation.png" alt="time">Bethpage New York 11714
+                        <img class="icon" src="..\assets\img\icons\telephone-handle-silhouette.png" alt="time">Bethpage New York 11714
                     </div>
 
                     <div class="icon_container">
-                        <img class="icon" src="img/icons/telephone-handle-silhouette.png" alt="telephone">+2126-34-777855
+                        <img class="icon" src="..\assets\img\icons\localisation.png" alt="telephone">+2126-34-777855
                     </div>
 
                     <div class="icon_container">
-                        <img class="icon" src="img/icons/email_icon.png" alt="email">contact@rcars.com
+                        <img class="icon" src="..\assets\img\icons\email_icon.png" alt="email">contact@rcars.com
                     </div>
 
                     <div class="icon_container">
-                        <img class="icon" src="img/icons/clock_icon.png" alt="clock">8:00AM - 9:00PM
+                        <img class="icon" src="../assets/img/icons/clock_icon.png" alt="clock">8:00AM - 9:00PM
                     </div>
                 </div>
             </div>

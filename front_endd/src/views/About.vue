@@ -1,22 +1,13 @@
 <template>
-  <div class="about">
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>About Us</title>
-</head>
-<body>
+<div>
+  <Navbar/>
     <div class="container_title_img">
         <h3 class="title">About Us</h3>
     </div>
     <div class="container">
         <div class="img_txt_container">
             <div class="img_container">
-                    <img class="img_test" src="img/about_us.jpg" alt="company image">
+                    <img class="img_test" src="../assets/img/about_us.jpg" alt="company image">
             </div>
             <div class="txt_container">
                 <h2 class="about_us_title">About <span class="red_title">Us</span></h2>
@@ -33,21 +24,44 @@
         </h2>
         <div class="partners_icons">
             <div class="partner_icon">
-                <img class="partner_img" src="img/partners/mercedes_logo.png" alt="">
+                <img class="partner_img" src="../assets/img/partners/mercedes_logo.png" alt="">
             </div>
             <div class="partner_icon">
-                <img class="partner_img" src="img/partners/bmw_logo.png" alt="">
+                <img class="partner_img" src="../assets/img/partners/bmw_logo.png" alt="">
             </div>
             <div class="partner_icon">
-                <img class="partner_img" src="img/partners/porshe_logo.png" alt="">
+                <img class="partner_img" src="../assets/img/partners/porshe_logo.png" alt="">
             </div>
             <div class="partner_icon">
-                <img class="partner_img" src="img/partners/Volkswagen_logo.png" alt="">
+                <img class="partner_img" src="../assets/img/partners/Volkswagen_logo.png" alt="">
             </div>
         </div>
     </div>
 
-</body>
-</html>
-  </div>
+    <Footer/>
+    </div>
 </template>
+
+
+<script>
+// @ is an alias to /src
+
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+  name: 'Contact',
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
+
+
+<style lang="scss">
+  /* ---------- about us --------- */
+
+@import "../assets/style/includes/about";
+@import "../assets/style/includes/base";
+</style>
