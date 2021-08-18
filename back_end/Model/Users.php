@@ -81,13 +81,12 @@ class Users
         $last_id = $row['id'];
         
         
-        $query2 = "INSERT INTO clients (firstName, lastName, birthdate, cin, gender, job, phoneNumber, address, user_id) 
-        VALUES (:firstName, :lastName, :birthdate, :cin, :gender, :job, :phoneNumber, :address, ".$last_id.")";
+        $query2 = "INSERT INTO clients (firstName, lastName, cin, gender, job, phoneNumber, address, user_id) 
+        VALUES (:firstName, :lastName, :cin, :gender, :job, :phoneNumber, :address, ".$last_id.")";
 
         // clean client informations
         $this->firstName = htmlspecialchars(strip_tags($this->firstName));
         $this->lastName = htmlspecialchars(strip_tags($this->lastName));
-        $this->birthdate = htmlspecialchars(strip_tags($this->birthdate));
         $this->cin = htmlspecialchars(strip_tags($this->cin));
         $this->gender = htmlspecialchars(strip_tags($this->gender));
         $this->job = htmlspecialchars(strip_tags($this->job));
@@ -99,7 +98,6 @@ class Users
         // bind data
         $stmt1->bindParam(':firstName', $this->firstName);
         $stmt1->bindParam(':lastName', $this->lastName);
-        $stmt1->bindParam(':birthdate', $this->birthdate);
         $stmt1->bindParam(':cin', $this->cin);
         $stmt1->bindParam(':gender', $this->gender);
         $stmt1->bindParam(':job', $this->job);
@@ -117,7 +115,7 @@ class Users
     
     public function login_check()
     {
-        $query = "SELECT * FROM users WHERE email = :email AND password= :password";
+        $query = "SELECT * FROM users, clients WHERE email = :email AND password= :password";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);

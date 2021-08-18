@@ -96,7 +96,8 @@ class ApiUser
             echo json_encode($users_arr);
         } else {
             // No Users
-            echo json_encode(
+            echo json_encode
+            (
                 array('message' => 'No Users found')
             );
         }
@@ -118,7 +119,6 @@ class ApiUser
 
         $user->firstName = $data->firstName;
         $user->lastName = $data->lastName;
-        $user->birthdate = $data->birthdate;
         $user->cin = $data->cin;
         $user->gender = $data->gender;
         $user->job = $data->job;
@@ -165,6 +165,8 @@ class ApiUser
             
             extract($result);
             $u = array( 'id' => $id,
+                        'firstName' => $firstName,
+                        'lastName' => $lastName,
                         'email' => $email,
                         'status' => true);
 
@@ -172,7 +174,7 @@ class ApiUser
 
         }else {
 
-            $u = array('message' => "there's no id",
+            $u = array('message' => "email or password incorrect",
                         'status' => false);
 
             echo json_encode($u);

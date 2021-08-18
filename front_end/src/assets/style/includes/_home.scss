@@ -1,0 +1,60 @@
+/* ---------- begin reservation page ------------- */
+
+.hero-image {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(8, 8, 8, 0.5)), url("../assets/img/home.jpeg");
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+}
+
+.container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* overflow: hidden; */
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.container h2 {
+    font-size: 30px;
+    letter-spacing: 0.2em;
+}
+
+.container h2 span {
+    /*         border: 10px solid black;*/
+    padding: 6px 14px;
+    display: inline-block;
+}
+
+.des {
+    margin: 6px auto 20px;
+    display: block;
+    font-size: 26px;
+    /* text-shadow: 0 0 10px black; */
+}
+
+.btn1 {
+    color: #111;
+    padding: 10px 24px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #e0ac1c;
+    border-radius: 30px;
+    transition: 0.3s all;
+}
+
+.btn1:hover {
+    color: #e0ac1c;
+    background-color: #111;
+}
+
+
+/* -------------- end reservation page ---------------- */
+
