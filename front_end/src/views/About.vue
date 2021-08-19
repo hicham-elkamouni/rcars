@@ -38,6 +38,71 @@
         </div>
     </div>
 
+    <div>
+        <h2 class="partners_title">
+            <span class="black_title">OUR</span> <span class="red_title">TEAM</span>
+        </h2>
+    </div>
+    <div class="team-container">
+        <div class="teammate">
+        <img class="teammate-img" src="..\assets\img\pics\pic_1.png" alt="" />
+        <span class="name">John Smith</span>
+        <span class="post">Sales Manager</span>
+        <div class="team-socials">
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\instagram-symbol.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\facebook-logo.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\twitter-sign.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\linkedin-sign.png" alt="" />
+            </a>
+        </div>
+        </div>
+        <div class="teammate">
+        <img class="teammate-img" src="..\assets\img\pics\pic_2.png" alt="" />
+        <span class="name">Jordan Belson</span>
+        <span class="post">CEO-Founder</span>
+        <div class="team-socials">
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\instagram-symbol.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\facebook-logo.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\twitter-sign.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\linkedin-sign.png" alt="" />
+            </a>
+        </div>
+        </div>
+        <div class="teammate">
+        <img class="teammate-img" src="..\assets\img\pics\pic_3.png" alt="" />
+        <span class="name">Jordi Smith</span>
+        <span class="post">UI/UX Designer</span>
+        <div class="team-socials">
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\instagram-symbol.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\facebook-logo.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\twitter-sign.png" alt="" />
+            </a>
+            <a target="blank" href="">
+            <img src="..\assets\img\icons\linkedin-sign.png" alt="" />
+            </a>
+        </div>
+        </div>
+    </div>
+
     <Footer/>
     </div>
 </template>

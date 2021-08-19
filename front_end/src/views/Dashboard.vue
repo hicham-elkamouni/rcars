@@ -1,50 +1,51 @@
 <template>
+<div>
+<Navbar/>
   <div class="container">
     <div class="container-width">
     <div class="logout-container">
-    <button @click="logOut" class="action-btn">Log Out</button>
+    <button @click="logout()" class="action-btn">Log Out</button>
     </div>
     
   
     <!-- User Personal Details -->
     <div class="box pesonal-info">
       <div class="user-name">
+        <span class="info-title">WELCOME BACK !{{ profession }}</span>
         <span class="name">{{ firstName }} {{ lastName }}</span>
-        <span class="info-title">{{ profession }}</span>
       </div>
       <div class="user-info">
-      <span class="info-title">Age : <span class="info">{{ age }} years old</span></span>
-      <span class="info-title">CIN : <span class="info">{{ cin }}</span></span>
+      <span class="info-title">Age : 21 <span class="info">{{ age }} years old</span></span>
+      <span class="info-title">CIN : HH127001 <span class="info">{{ cin }}</span></span>
     </div>
     </div>
+    <div class="for-space"></div>
     <!-- User Personal Details -->
-    <div class="btn-container">
-    <span class="copy-token">
-          <input readonly id="copyToken" :value="token">
-          <button @click.prevent="copyToken">Copy Token</button>
-    </span>
-      <button class="action-btn" @click="$refs.Modal.openModal">Book Appointment</button>
-    </div>
+    <!-- <div class="btn-container">
+      <button class="action-btn" @click="editAppointment">Book Appointment</button>
+    </div> -->
     <!-- User appointments -->
-    <div v-if="appointments" class="box">
+    <div class="box">
     <table>
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Subject</th>
-          <th>Time</th>
+          <th>Number</th>
+          <th>type</th>
+          <th>brand</th>
+          <th>color</th>
           <th>Edit / Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(appointment, index) in appointments" :key="appointment.bookingId">
-          <td>{{ appointments[index].bookingDate }}</td>
-          <td>{{ appointments[index].bookingSubject }}</td>
-          <td>{{ appointments[index].bookingTiming }}</td>
+        <tr v-for="(car, index) in cars" :key="car.vehicle_id">
+          <td>{{ index + 1 }}</td>
+          <td>{{ car.type }}</td>
+          <td>{{ car.brand }}</td>
+          <td>{{ car.color }}</td>
           <td>
           <button class="edit" @click.prevent="editAppointment(appointment.bookingId)">Edit</button>
-          <button class="delete" @click="getResponse(response), bookingId = appointment.bookingId">Delete
-          </button>
+          <button class="delete" @click="deleteBooking(car.booking_id)">Delete</button>
+          
           </td>
         </tr>
       </tbody>
@@ -52,131 +53,99 @@
     </div>
     <!-- User appointments -->
     <!-- If user has no appointments -->
-    <p class="noBookings" v-else>No appointments are found.</p>
+    <!-- <p class="noBookings" >No Bookings are found.</p> -->
     <!-- If user has no appointments -->
     
   </div>
+  </div>
+  <Footer/>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
+  name: 'Dashboard',
   components: {
-    name: 'Contact',
-  components: {
-    
-  }
+    Navbar,
+    Footer
   },
   data() {
     return {
-      appointments: false,
-      firstName: "",
-      lastName: "",
-      cin: "",
-      age: "",
-      profession: "",
-      appointments: "",
-      date: "",
-      subject: "",
-      time: "",
-      bookingId: "",
-      token: window.localStorage.getItem("token"),
+      cars: {},
+      user_personal_informations: {},
+      firstName : sessionStorage.getItem("firstName"),
+      lastName : sessionStorage.getItem("lastName"),
+      app: false
     };
   },
   methods: {
-    // Load loged in user data
-    async loadData() {
-      const res = await axios.post(
-        "http://localhost/lawyer/appointment/readAppointment",
-        {
-          reference: window.localStorage.getItem("token"),
-        }
+    logout(){
+      window.sessionStorage.removeItem("user_id");
+      window.sessionStorage.removeItem("firstName");
+      window.sessionStorage.removeItem("lastName");
+      // Redirect to home
+      this.$router.push("/");
+    },
+    // delete booking 
+    async deleteBooking(id) {
+      console.log(id);
+      let obj = {
+        appointement_id: id
+      };
+      console.log(obj);
+      const response = await axios.delete(
+        `http://localhost/rcars/ApiBooking/deleteBooking/${id}`
       );
-      // If no error exists
-      if (!res.data.error) {
-        this.firstName = res.data.user_data.personal_data.firstName;
-        this.lastName = res.data.user_data.personal_data.lastName;
-        this.cin = res.data.user_data.personal_data.cin;
-        this.age = res.data.user_data.personal_data.age;
-        this.profession = res.data.user_data.personal_data.profession;
-        // get appointments object lenght
-        let objectLenght = Object.keys(res.data.user_data.appointments).length;
-        // Check if user got any appointments
-        if (objectLenght > 0) {
-          this.appointments = true;
-          this.appointments = res.data.user_data.appointments;
-        } else {
-          this.appointments = false;
-        }
+
+      if (response.data) {
+        console.log(response.data);
       }
-      // If an error exists
-      else {
-        // Redirect to dashboard
-        window.localStorage.removeItem("token");
+      this.getAllAppointements();
+    },
+
+    checkuser() {
+      let user_id = sessionStorage.getItem("user_id");
+      if (user_id != null) {
+        this.getAllAppointements();
+      } else {
         this.$router.push("/");
       }
     },
-    // Change the button state from booking to editing
-    editAppointment(Id) {
-      this.$refs.Modal.editState(Id);
-    },
-    // Get the confirmation before deleting an appointment
-    getResponse(response) {
-      this.$refs.ConfirmNotif.openConfirmation();
-      // If response is true
-      if (response) {
-        this.deleteAppointment(this.bookingId);
-      }
-    },
-    // Delete an appointment
-    async deleteAppointment(Id) {
-      const res = await axios.post(
-        "http://localhost/lawyer/appointment/deleteAppointment",
-        {
-          booking_id: Id,
-        }
+    async getAllAppointements() {
+      let u_id = sessionStorage.getItem("user_id");
+      const response = await axios.get(
+        "http://localhost/rcars/ApiBooking/getAllBookings/" +
+          u_id,
+        
       );
-      // If no error exists
-      if (!res.data.error) {
-        // Fetch data
-        this.loadData();
-        // Display a notification message
-        this.$refs.notification.openNotif(res.data.message);
-      }
-      // If an error exists
-      else {
-        // Display a notification message
-        this.$refs.notification.openNotif(res.data.message);
+      console.log(response.data.cars);
+      
+      if (response.data.status == true) {
+        
+        this.cars = response.data.cars;
+        this.user_personal_informations = response.data.personal_infos;
+        
+      } else {
+        this.app = false;
       }
     },
-    // Copy the token to the clipboard
-    copyToken(){
-    let copyToken = document.getElementById("copyToken");
-    // Select the token
-    copyToken.select();
-    // For mobile devices
-    copyToken.setSelectionRange(0, 99999);
-    // Copy the token to the clipboard
-    document.execCommand("copy");
-    console.log(copyToken.value);
+    
   },
-    // Log user out
-    logOut() {
-      // Redirect to dashboard
-      window.localStorage.removeItem("token");
-      this.$router.push("/");
-    },
-  },
-  // Load user data just before vue app being rendered
+  
   beforeMount() {
-    this.loadData();
-  },
+    this.checkuser();
+  }
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+@import "../assets/style/includes/base";
+
 .container {
   display: flex;
   flex-direction: row;
@@ -195,14 +164,16 @@ export default {
   text-transform: uppercase;
   font-weight: bold;
   color: #ffff;
-  background-color: #363772;
+  background-color: #E61722;
   border: 0px;
   border-radius: 20px;
   padding: 10px 30px;
   transition: ease-in-out 0.3s;
 }
 .action-btn:hover {
-  background-color: #b39162;
+  background-color: #ffffff;
+  border : 1px solid #E61722;
+  color: #E61722;
 }
 .pesonal-info {
   display: grid;
@@ -311,5 +282,10 @@ tbody tr td .delete:hover
   padding: 40px 50px;
   border-radius: 30px;
   box-shadow: 0 2px 12px -5px #000000;
+}
+
+// updates adding div for space
+.for-space{
+  padding : 50px 0 0 !important;
 }
 </style>

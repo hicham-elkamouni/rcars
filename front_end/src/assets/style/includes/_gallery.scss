@@ -34,9 +34,8 @@
 
 .roww {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .imagee {

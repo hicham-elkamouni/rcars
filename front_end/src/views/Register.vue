@@ -7,23 +7,18 @@
       <img src="..\assets\img\Mobile-login.jpg" alt="">
       <div class="sign-form">
       <!---------------- sign_up--------------->
-        <form class="sign-up" @submit.prevent="register" v-if="signUp">
+        <form class="sign-up" @submit.prevent="register()" v-if="signUp">
           <span class="inline">Register</span>
           <input type="text" v-model="firstName" placeholder="Enter your first name">
           <input type="text" v-model="lastName" placeholder="Enter your last name">
-          <!-- <select name=""  v-model="gender">
-            <option value="" style="color: #929292" selected hidden>Enter your gender</option>
-            <option value="">Male</option>
-            <option value="">Female</option>
-          </select> -->
           <input type="text" v-model="gender" placeholder="Enter your gender">
           <input type="text" v-model="cin" placeholder="Enter your CIN">
           <input type="text" v-model="phoneNumber" placeholder="Enter your phoneNumber number">
           <input type="text" v-model="address" placeholder="Enter your address">
           <input type="text" v-model="job" placeholder="Enter your job">
-          <input type="text" v-model="email" placeholder="Enter your email">
+          <input type="text" v-model="email" placeholder="Enter your email" pattern="([A-Za-z0-9]{1,50}@gmail.com)" required="">
           <input type="password" v-model="password" placeholder="Enter your password">
-          <input type="password" v-model="passwordRepeat" placeholder="Repeat your password">
+          <input type="password" v-model="passwordRepeat" placeholder="Repeat your password" >
           <div class="inline checkbox">
             <input type="checkbox">
             <label for="">I have read and agreed to the terms of service.</label>
@@ -102,9 +97,11 @@ export default {
           password: this.password
         }
       );
+
+      this.$router.push("/gallery");
     },
     async login(){
-      console.log("u're innnnnnn")
+      console.log("u're innnnnnn");
       const res = await axios.post(
         "http://localhost/rcars/apiUser/sign_in",
         {
@@ -113,14 +110,15 @@ export default {
         }
       );
 
+
+
       if (res.data.status == true) {
         console.log(res.data);
         console.log("you're logged in");
-        sessionStorage.setItem("id", res.data.id);
+        sessionStorage.setItem("user_id", res.data.user_id);
         sessionStorage.setItem("firstName", res.data.firstName);
         sessionStorage.setItem("lastName", res.data.lastName);
         localStorage.setItem("ifTrue", true);
-
         this.$router.push("/gallery");
       }
   }
@@ -211,16 +209,10 @@ export default {
     background-color: #E61722;
     border: none;
     cursor: pointer;
-    width: 140px;
-    height: 45px;
     font-weight: bold;
     transition: box-shadow 0.3s ease-in-out;
     &:hover {
         box-shadow: 0 0 11px rgba(33,33,33,.5); 
       }
-}
-
-.input_width {
-  width: 100%;
 }
 </style>

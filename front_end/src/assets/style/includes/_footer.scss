@@ -6,7 +6,7 @@
     width: 100%;
     text-align: left;
     font: bold 16px sans-serif;
-    padding: 50px 50px 60px 50px;
+    padding: 50px 50px 60px 50px !important;
     /* margin-top: 80px; */
 }
 
@@ -164,4 +164,13 @@
     .footer-distributed .footer-center i {
         margin-left: 0;
     }
+}
+
+
+/* --- updates on logo ---- */
+
+.bolder{
+    font-size:25px;
+    font-weight:800;
+    color : #fff;
 }

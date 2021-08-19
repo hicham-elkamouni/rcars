@@ -164,7 +164,7 @@ class ApiUser
         if ($result){
             
             extract($result);
-            $u = array( 'id' => $id,
+            $u = array( 'user_id' => $id,
                         'firstName' => $firstName,
                         'lastName' => $lastName,
                         'email' => $email,

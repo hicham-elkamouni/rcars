@@ -3,7 +3,7 @@
     <footer class="footer-distributed">
 
         <div class="footer-left">
-            <span>R<span style="color:#E61722">CAR</span></span>
+            <span class="bolder">R<span style="color:#E61722">CAR</span></span>
 
             <p class="footer-links">
                 <router-link to="/">Home</router-link>|

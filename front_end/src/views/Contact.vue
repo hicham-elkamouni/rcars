@@ -55,6 +55,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d640.9983072455299!2d-9.239082894364985!3d32.30019800088503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdac2126025ff121%3A0x5fdad8a273729525!2sRestaurant%20Chez%20Hosni!5e0!3m2!1sfr!2sma!4v1629030969856!5m2!1sfr!2sma" height="600" width="99.5%" style="border: 1px solid #707070;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
+
     <Footer/>
 </template>
 
