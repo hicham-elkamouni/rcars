@@ -4,7 +4,7 @@
     <nav>
         <input id="nav-toggle" type="checkbox">
         <div class="logo">
-            <span class="bolder">R<span class="bolder" style="color: #E61722;" >CAR</span></span>
+            <span class="bolder">R<span class="bolder" style="color: #E61722;" >CARS</span></span>
             
         </div>
         <ul class="links">
